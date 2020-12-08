@@ -111,8 +111,22 @@ namespace LanguageFeatures.Controllers
                     new Product { Name = "Corner flag", Category = "Soccer", Price = 34.95M }
                 }
             };
+            //Func<Product, bool> categoryFilter = delegate (Product prod)
+            //{
+            //    return prod.Category == "Soccer";
+            //};
+            //Func<Product, bool> categoryFilter = prod => prod.Category == "Soccer";
+
             decimal total = 0;
-            foreach (Product prod in products.FilterByCategory("Soccer"))
+            //foreach (Product prod in products.FilterByCategory("Soccer"))
+            //{
+            //    total += prod.Price;
+            //}
+            //foreach (Product prod in products.Filter(categoryFilter))
+            //{
+            //    total += prod.Price;
+            //}
+            foreach (Product prod in products.Filter(prod => prod.Category == "Soccer" || prod.Price > 50))
             {
                 total += prod.Price;
             }
