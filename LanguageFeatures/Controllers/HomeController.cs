@@ -53,5 +53,21 @@ namespace LanguageFeatures.Controllers
             };
             return View("Result", (object)stringArray[1]);
         }
+
+        public ViewResult UseExtension() {
+            // create and populate ShoppingCart
+            ShoppingCart cart = new ShoppingCart
+            {
+                Products = new List<Product> {
+                    new Product { Name = "Kayak", Price = 275M },
+                    new Product { Name = "Lifejacket", Price = 48.95M },
+                    new Product { Name = "Soccer ball", Price = 19.50M },
+                    new Product { Name = "Corner flag", Price = 34.95M }
+                }
+            };
+            // get the total value of the products in the cart
+            decimal cartTotal = cart.TotalPrices();
+            return View("Result", (object)String.Format("Total: {0:c}", cartTotal));
+        }
     }
 }
